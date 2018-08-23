@@ -1,0 +1,44 @@
+alias l="ls -lh --group-directories-first"
+alias ll="l"
+alias la="l -A"
+alias l.="l -d .?*"
+alias ls.="ls -d .?*"
+
+# cd and print dir contents
+c() { cd "$@" && l; }
+alias c.='c .'
+alias c..='c ..'
+alias c...='c ...'
+alias c....='c ....'
+alias c.....='c .....'
+alias c-='c -'
+
+# Same syntax for default cd
+alias cd.='cd .'
+alias cd..='cd ..'
+alias cd...='cd ...'
+alias cd....='cd ....'
+alias cd.....='cd .....'
+alias cd-='cd -'
+
+alias vimrc='vim ~/.vimrc'
+
+# Make vim the default editor for ranger
+export EDITOR=vim ranger
+
+
+find_in_files() { 
+	if [ $# -eq 0 ]
+	then
+		echo "No filename to search for"
+	else
+		grep -ir "$*" * ;
+	fi
+}
+find_files() {
+	find . -iname "*$@*" | grep "$*" -i
+}
+alias f="find_files"
+alias F="find_in_files"
+
+alias o="xdg-open"

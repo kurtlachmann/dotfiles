@@ -1,0 +1,5 @@
+# Replace Tab-Tab with a single Tab
+set show-all-if-ambiguous on
+
+# Case insensitive completion
+set completion-ignore-case on
