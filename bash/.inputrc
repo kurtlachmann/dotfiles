@@ -1,3 +1,11 @@
+$include /etc/inputrc
+
+# Alt-Up: Go to parent directory
+"\e[1;3A": "cd ..\015"
+
+# Alt-Left: Go to last visited directory
+"\e[1;3D": "cd -\015"
+
 # Replace Tab-Tab with a single Tab
 set show-all-if-ambiguous on
 
