@@ -129,6 +129,10 @@ nmap <Leader>b :NERDTreeToggle<CR>
 nnoremap <leader>o :ls<cr>:b<space>
 
 
+" Leader-e to switch to the last edited buffer
+nnoremap <leader>e :b#<CR>
+
+
 " Insert a new line without entering insert mode.
 " Enter        - insert below current line
 " Leader-Enter - insert above current line
@@ -146,7 +150,7 @@ nnoremap <Leader>q :q<CR>
 
 " Execute the current file with Leader-r
 " (%:p refers to the file's full path)
-nnoremap <Leader>r :!%:p<CR>
+"nnoremap <Leader>r :!%:p<CR>
 autocmd FileType python nnoremap <Leader>r :w<CR>:exec '!python' shellescape(@%, 1)<CR>
 
 
@@ -188,7 +192,7 @@ nnoremap , ;
 nnoremap ; ,
 
 
-" Increment and decrement with + and -
+" Increment and decrement numbers with + and -
 nnoremap + <C-a>
 nnoremap - <C-x>
 

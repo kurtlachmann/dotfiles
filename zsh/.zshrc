@@ -26,8 +26,8 @@ ZSH_THEME="af-magic"
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# Disable auto-setting terminal title.
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -99,3 +99,10 @@ export EDITOR=vim ranger
 
 # Load commands from virtualenvwrapper
 source /usr/local/bin/virtualenvwrapper.sh
+
+
+# ZSH does not read .inputrc because it does not use Readline
+# Add the same behaviour as implemented in .inputrc
+#
+# Alt-u: Move to parent directory
+bindkey -s '^[u' 'cd ..^M'

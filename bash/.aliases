@@ -42,3 +42,6 @@ alias f="find_files"
 alias F="find_in_files"
 
 alias o="xdg-open"
+
+# Force 256 colors in tmux
+alias tmux='tmux -2'

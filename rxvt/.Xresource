@@ -1,0 +1,69 @@
+URxvt*termName: rxvt-256color
+
+!URxvt.font:     xft:DejaVu sans mono:size=9
+!URxvt*boldFont: xft:DejaVu sans mono:size=9:style=Bold
+
+!*font:       -kakwa-kakwafont-medium-r-normal--0-0-72-72-c-0-iso8859-1
+!*boldFont:   -kakwa-kakwafont-medium-r-normal--0-0-72-72-c-0-iso8859-1
+!*italicFont: -kakwa-kakwafont-medium-r-normal--0-0-72-72-c-0-iso8859-1
+
+*font:       -windows-proggytiny-medium-r-normal--10-80-96-96-c-60-iso8859-1
+*boldFont:   -windows-proggytiny-medium-r-normal--10-80-96-96-c-60-iso8859-1
+*italicFont: -windows-proggytiny-medium-r-normal--10-80-96-96-c-60-iso8859-1
+
+
+URxvt.scrollBar:  false
+URxvt.shading:    30
+URxvt.internalBorder: 20
+! URxvt.letterSpace: -1
+
+URxvt*lineSpace: 2
+
+
+*background: #282828
+*foreground: #EAE0C7
+! black
+*color0: #3F3F3F
+*color8: #425059
+! red
+*color1: #A54242
+*color9: #CC6666
+! green
+*color2:  #8C9440
+*color10: #B5BD68
+! yellow
+*color3:  #DE935F
+*color11: #F0C674
+! blue
+*color4:  #C4E540
+*color12: #C4E540
+! magenta
+*color5:  #85678F
+*color13: #B294BB
+! cyan
+*color6:  #5E8D87
+*color14: #8ABEB7
+! white
+*color7:  #6C7A80
+*color15: #C5C8C6
+
+
+! A cool colorscheme I found on /r/unixporn
+!*background: #111111
+!*foreground: #f8f8f2
+!*color0:  #111111
+!*color1:  #f92672
+!*color2:  #a6e22e
+!*color3:  #f4bf75
+!*color4:  #66d9ef
+!*color5:  #ae81ff
+!*color6:  #a1efe4
+!*color7:  #f8f8f2
+! Also add these colors:
+! dark grey  #75715e
+! orange     #cc6633
+
+
+URxvt.perl-ext-common: resize-font
+URxvt.resize-font.smaller: C-minus
+URxvt.resize-font.bigger: C-plus
