@@ -1,8 +1,10 @@
-alias l="ls -lh --group-directories-first"
+alias ls="ls --color=tty --group-directories-first"
+alias ls.="ls -d .?*"
+alias lsa="ls -A"
+alias l="ls -lh"
 alias ll="l"
 alias la="l -A"
 alias l.="l -d .?*"
-alias ls.="ls -d .?*"
 
 # cd and print dir contents
 c() { cd "$@" && l; }
@@ -21,7 +23,9 @@ alias cd....='cd ....'
 alias cd.....='cd .....'
 alias cd-='cd -'
 
+# Quick access to some common programs or files
 alias vimrc='vim ~/.vimrc'
+alias chrome="google-chrome"
 
 # Make vim the default editor for ranger
 export EDITOR=vim ranger
