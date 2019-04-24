@@ -44,4 +44,6 @@ alias F="find_in_files"
 alias o="xdg-open"
 
 # Force 256 colors in tmux
-alias tmux='tmux -2'
+# Start in ~/.tmux so that logs are written there
+# But make sure the working directory is still HOME
+alias tmux='cd ~/.tmux && tmux -2 new -c $HOME'
