@@ -20,24 +20,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 
-" Auto-completion
-"Plugin 'Valloric/YouCompleteMe'
-
-
-" Snippets
-Plugin 'sirver/UltiSnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-
 " Automatic closing of quotes, parantheses, brackets, ...
 Plugin 'delimitMate.vim'
 " Enable expansion behaviour as known from modern IDEs:
@@ -108,11 +90,8 @@ filetype plugin indent on
 set background=dark
 syntax on
 set cursorline
-colorscheme custom
+colorscheme koehler
 
-
-
-"------------------------------------------------------------
 "   Mappings
 "------------------------------------------------------------
 
