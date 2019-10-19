@@ -1,7 +1,7 @@
-alias ls="ls --color=tty --group-directories-first"
+alias ls="ls -h --color=tty --group-directories-first"
 alias ls.="ls -d .?*"
 alias lsa="ls -A"
-alias l="ls -lh"
+alias l="ls -l"
 alias ll="l"
 alias la="l -A"
 alias l.="l -d .?*"
@@ -23,12 +23,16 @@ alias cd....='cd ....'
 alias cd.....='cd .....'
 alias cd-='cd -'
 
-# Quick access to some common programs or files
-alias vimrc='vim ~/.vimrc'
-alias chrome="google-chrome"
+# Human-readable sizes
+alias df='df -h'
+alias du='du -h'
+alias free='free -h'
 
-# Make vim the default editor for ranger
-export EDITOR=vim ranger
+# Confirm before overwriting something
+alias cp="cp -i"
+
+# Quick access to some common programs or files
+alias chrome="google-chrome"
 
 
 find_in_files() { 

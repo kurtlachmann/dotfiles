@@ -1,108 +1,145 @@
-# Path to your oh-my-zsh installation.
-  export ZSH=/home/kurt/.oh-my-zsh
+## Options section
+setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
+setopt nocaseglob                                               # Case insensitive globbing
+setopt rcexpandparam                                            # Array expension with parameters
+setopt nocheckjobs                                              # Don't warn about running processes when exiting
+setopt numericglobsort                                          # Sort filenames numerically when it makes sense
+setopt nobeep                                                   # No beep
+setopt appendhistory                                            # Immediately append history instead of overwriting
+setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
+setopt autocd                                                   # if only directory path is entered, cd there.
 
-export PYTHONPATH=$PYTHONPATH:/home/kurt/code/tensorflow/models/research/:/home/kurt/code/tensorflow/models/research/slim
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' rehash true                              # automatically find new executables in path
+# Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+HISTFILE=~/.zhistory
+HISTSIZE=1000
+SAVEHIST=500
+WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="cobalt2"
-ZSH_THEME="af-magic"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-# User configuration
-
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="vim ~/.zshrc"
-# alias ohmyzsh="vim ~/.oh-my-zsh"
+export EDITOR=vim
+#export VISUAL=/usr/bin/nano
 
 
-# Alias definitions.
+## Keybindings section
+bindkey -e
+bindkey '^[[7~' beginning-of-line                               # Home key
+bindkey '^[[H' beginning-of-line                                # Home key
+if [[ "${terminfo[khome]}" != "" ]]; then
+  bindkey "${terminfo[khome]}" beginning-of-line                # [Home] - Go to beginning of line
+fi
+bindkey '^[[8~' end-of-line                                     # End key
+bindkey '^[[F' end-of-line                                     # End key
+if [[ "${terminfo[kend]}" != "" ]]; then
+  bindkey "${terminfo[kend]}" end-of-line                       # [End] - Go to end of line
+fi
+bindkey '^[[2~' overwrite-mode                                  # Insert key
+bindkey '^[[3~' delete-char                                     # Delete key
+bindkey '^[[C'  forward-char                                    # Right key
+bindkey '^[[D'  backward-char                                   # Left key
+bindkey '^[[5~' history-beginning-search-backward               # Page up key
+bindkey '^[[6~' history-beginning-search-forward                # Page down key
+
+# Navigate words with ctrl+arrow keys
+bindkey '^[Oc' forward-word                                     #
+bindkey '^[Od' backward-word                                    #
+bindkey '^[[1;5D' backward-word                                 #
+bindkey '^[[1;5C' forward-word                                  #
+bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
+bindkey '^[[Z' undo                                             # Shift+tab undo last action
+
+# Alias definitions
 if [ -f ~/.aliases ]; then
     source ~/.aliases
 fi
 
+# Theming section
+autoload -U compinit colors zcalc
+compinit -d
+colors
 
-# Make vim the default editor for ranger
-export EDITOR=vim ranger
+# enable substitution for prompt
+setopt prompt_subst
+
+parse_git_branch() {
+  # Show Git branch/tag, or name-rev if on detached head
+  ( git branch --show-current || git name-rev --name-only --no-undefined --always HEAD ) 2> /dev/null
+}
+
+git_prompt_string() {
+  # If inside a Git repo, print the branch name and a flag if there are uncommited changes
+  local GIT_BRANCH_NAME="$(parse_git_branch)"
+  if [[ -n $GIT_BRANCH_NAME ]]; then
+    local GIT_DIRTY_STATE=""
+    if ! git diff --quiet 2> /dev/null; then
+      GIT_DIRTY_STATE="*"
+    fi
+    echo " %F{gray}($GIT_BRANCH_NAME%f%F{red}$GIT_DIRTY_STATE%f%F{gray})%f"
+  fi
+}
 
 
-# Load commands from virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
+NEWLINE=$'\n'
+PROMPT='${NEWLINE}%F{green}%~%f$(git_prompt_string) %F{green}»%f '
 
 
-# ZSH does not read .inputrc because it does not use Readline
-# Add the same behaviour as implemented in .inputrc
-#
-# Alt-u: Move to parent directory
-bindkey -s '^[u' 'cd ..^M'
+# Color man pages
+export LESS_TERMCAP_mb=$'\E[01;32m'
+export LESS_TERMCAP_md=$'\E[01;32m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;47;34m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export LESS=-r
+
+
+
+## Plugins section: Enable fish style features
+# Use syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Use history substring search
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+# bind UP and DOWN arrow keys to history substring search
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# Apply different settigns for different terminals
+case $(basename "$(cat "/proc/$PPID/comm")") in
+  login)
+    	RPROMPT="%{$fg[red]%} %(?..[%?])"
+    	alias x='startx ~/.xinitrc'      # Type name of desired desktop after x, xinitrc is configured for it
+    ;;
+#  'tmux: server')
+#        RPROMPT='$(git_prompt_string)'
+#		## Base16 Shell color themes.
+#		#possible themes: 3024, apathy, ashes, atelierdune, atelierforest, atelierhearth,
+#		#atelierseaside, bespin, brewer, chalk, codeschool, colors, default, eighties,
+#		#embers, flat, google, grayscale, greenscreen, harmonic16, isotope, londontube,
+#		#marrakesh, mocha, monokai, ocean, paraiso, pop (dark only), railscasts, shapesifter,
+#		#solarized, summerfruit, tomorrow, twilight
+#		#theme="eighties"
+#		#Possible variants: dark and light
+#		#shade="dark"
+#		#BASE16_SHELL="/usr/share/zsh/scripts/base16-shell/base16-$theme.$shade.sh"
+#		#[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+#		# Use autosuggestion
+#		source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+#		ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+#  		ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+#     ;;
+  *)
+        # RPROMPT='$(git_prompt_string)'
+		# Use autosuggestion
+		source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+		ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+  		ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+    ;;
+esac
