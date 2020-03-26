@@ -10,17 +10,17 @@ alias l.="l -d .?*"
 c() { cd "$@" && l; }
 alias c.='c .'
 alias c..='c ..'
-alias c...='c ...'
-alias c....='c ....'
-alias c.....='c .....'
+alias c...='c ../..'
+alias c....='c ../../..'
+alias c.....='c ../../../..'
 alias c-='c -'
 
 # Same syntax for default cd
 alias cd.='cd .'
 alias cd..='cd ..'
-alias cd...='cd ...'
-alias cd....='cd ....'
-alias cd.....='cd .....'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
 alias cd-='cd -'
 
 # Human-readable sizes
