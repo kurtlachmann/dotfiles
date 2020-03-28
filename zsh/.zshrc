@@ -84,7 +84,7 @@ git_prompt_string() {
 
 
 NEWLINE=$'\n'
-PROMPT='${NEWLINE}%F{green}%~%f$(git_prompt_string) %F{green}»%f '
+PROMPT='${NEWLINE}%F{green}%n@%m: %F{blue}%~%f$(git_prompt_string) %F{blue}»%f '
 
 
 # Color man pages
