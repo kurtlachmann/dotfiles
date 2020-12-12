@@ -57,6 +57,10 @@ bindkey '^[[1;5C' forward-word                                  #
 bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
+# Navigate directories with Arrow-Keys
+bindkey -s '^[[1;3A' 'cd ..^M'                                  # Alt-Up go to parent directory
+bindkey -s '^[[1;3D' 'cd -^M'                                   # Alt-Left go to previous directory
+
 # Alias definitions
 if [ -f ~/.aliases ]; then
     source ~/.aliases
