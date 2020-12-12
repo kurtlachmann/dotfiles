@@ -32,7 +32,7 @@ alias free='free -h'
 alias cp="cp -i"
 
 # Quick access to some common programs or files
-alias chrome="google-chrome"
+alias chrome="google-chrome-stable"
 
 
 find_in_files() { 
