@@ -46,8 +46,8 @@ bindkey '^[[2~' overwrite-mode                                  # Insert key
 bindkey '^[[3~' delete-char                                     # Delete key
 bindkey '^[[C'  forward-char                                    # Right key
 bindkey '^[[D'  backward-char                                   # Left key
-bindkey '^[[5~' history-beginning-search-backward               # Page up key
-bindkey '^[[6~' history-beginning-search-forward                # Page down key
+bindkey '^[[A' history-beginning-search-backward                # Up-Arrow
+bindkey '^[[B' history-beginning-search-forward                 # Down-Arrow
 
 # Navigate words with ctrl+arrow keys
 bindkey '^[Oc' forward-word                                     #
@@ -108,19 +108,11 @@ export LESS=-r
 
 
 
-## Plugins section: Enable fish style features
+## Plugins section:
 # Use syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Use history substring search
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-# bind UP and DOWN arrow keys to history substring search
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
-# Apply different settigns for different terminals
+# Apply different settings for different terminals
 case $(basename "$(cat "/proc/$PPID/comm")") in
   login)
     	RPROMPT="%{$fg[red]%} %(?..[%?])"
