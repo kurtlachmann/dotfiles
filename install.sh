@@ -1,7 +1,7 @@
-stow bash
-stow zsh
-stow vim
-stow tmux
+stow bash -v
+stow zsh -v
+stow vim -v
+stow tmux-2.9 -v
 
 utils/install_vim_plugins.sh
 utils/install_zsh_plugins.sh
