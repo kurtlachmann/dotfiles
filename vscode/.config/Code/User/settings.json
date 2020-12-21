@@ -1,10 +1,14 @@
 {
-    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.colorTheme": "Ayu Dark Bordered",
     "workbench.iconTheme": "material-icon-theme",
     "window.zoomLevel": 0,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": true,
     "window.titleBarStyle": "custom",
     "rewrap.wrappingColumn": 78,
-    "latex-workshop.view.pdf.viewer": "tab"
+    "latex-workshop.view.pdf.viewer": "tab",
+    "files.trimTrailingWhitespace": true,
+    "editor.rulers": [
+        100,
+    ]
 }
