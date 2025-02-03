@@ -13,3 +13,7 @@ set show-all-if-ambiguous on
 
 # Case insensitive completion
 set completion-ignore-case on
+
+# Search history beginning with current string, using up/down arrows
+"\e[A": history-search-backward
+"\e[B": history-search-forward
