@@ -1,7 +1,5 @@
 {
-    "workbench.colorTheme": "Ayu Dark Bordered",
     "workbench.iconTheme": "material-icon-theme",
-    "window.zoomLevel": 0,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": true,
     "window.titleBarStyle": "custom",
@@ -9,6 +7,66 @@
     "latex-workshop.view.pdf.viewer": "tab",
     "files.trimTrailingWhitespace": true,
     "editor.rulers": [
-        100,
-    ]
+        {
+            "column": 100,
+            "color": "#335"
+        }
+    ],
+    "editor.insertSpaces": false,
+    "workbench.tree.indent": 16,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "files.exclude": {
+        "**/*.import": true
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "godot_tools.editor_path": "/home/kurt/code/godot/Godot_v4.1.1-stable_x11.64",
+    "python.analysis.completeFunctionParens": true,
+    "C_Cpp.dimInactiveRegions": false,
+    "debug.onTaskErrors": "debugAnyway",
+    "rust-analyzer.inlayHints.parameterHints.enable": false,
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "files.insertFinalNewline": true,
+    "editor.renderWhitespace": "all",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "problems.showCurrentInStatus": true,
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git-graph.openNewTabEditorGroup": "Two",
+    "godot_tools.gdscript_lsp_server_port": 6005,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "godotTools.editorPath.godot3": "/home/kurt/code/godot/Godot_v4.2.1-stable_x11.64",
+    "godotTools.editorPath.godot4": "/home/kurt/code/godot/Godot_v4.2.1-stable_linux.x86_64",
+    "godotTools.lsp.serverPort": 6005,
+    "dotnet.codeLens.enableReferencesCodeLens": false,
+    "asm-code-lens.enableCodeLenses": false,
+    "workbench.colorTheme": "Ayu Mirage Bordered",
+    "material-icon-theme.folders.color": "#90a4ae",
+    "material-icon-theme.folders.theme": "classic",
+    "debug.allowBreakpointsEverywhere": true,
+    "diffEditor.hideUnchangedRegions.enabled": true,
 }
