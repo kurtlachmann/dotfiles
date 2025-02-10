@@ -19,6 +19,10 @@ vim.keymap.set('n', ';', ',')
 vim.keymap.set({'n', 'v'}, '<C-up>', '8<up>')
 vim.keymap.set({'n', 'v'}, '<C-down>', '8<down>')
 
+-- Move left/right by words with Ctrl-Left/Right
+vim.keymap.set('n', '<C-right>', 'w')
+vim.keymap.set('n', '<C-left>', 'b')
+
 -- Move to first non-whitespace character with <Home>
 vim.keymap.set('i', '<Home>', '<C-O>^')
 vim.keymap.set('n', '<Home>', '^')
