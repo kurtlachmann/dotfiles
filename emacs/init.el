@@ -83,6 +83,9 @@
 ;; Immediately wrap around the end of the file without extra keypress and without warning ("ding")
 (setq isearch-wrap-pause 'no-ding)
 
+;; Auto close parentheses
+(electric-pair-mode t)
+
 ;; Dired: which flags should be passed to the `ls` command
 (setq dired-listing-switches "-Ahl --group-directories-first")
 
@@ -146,13 +149,12 @@
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
   (define-key evil-insert-state-map (kbd "C-v") 'yank)
   (define-key evil-normal-state-map (kbd ",") 'evil-repeat-find-char)
   (define-key evil-normal-state-map (kbd ";") 'evil-repeat-find-char-reverse)
-  (define-key evil-normal-state-map (kbd "<return>") 'insert-newline-below)
+  (define-key evil-normal-state-map (kbd "<return>") '(lambda () (interactive) (insert-newline-below) (next-line)))
   (define-key evil-normal-state-map (kbd "S-<return>") 'insert-newline-above)
-  ;;(define-key evil-visual-state-map (kbd "C-c") 
+  (define-key evil-normal-state-map (kbd "<home>") 'evil-first-non-blank)
 
   ;; TODO configure key bindings
   ;; ??? 'lsp-ui-doc-show
@@ -241,6 +243,8 @@
 
 (use-package popup)
 
+(use-package dap-mode)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; THEME ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -257,8 +261,12 @@
 
 ;; Color theme
 (use-package dracula-theme
+  :init)
+;;  (load-theme 'dracula))
+
+(use-package ayu-theme
   :init
-  (load-theme 'dracula))
+  (load-theme 'ayu-dark))
 
 ;; Fix some font colors
 (setq face-remapping-alist
