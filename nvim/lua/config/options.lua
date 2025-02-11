@@ -1,5 +1,5 @@
 -- Force English UI in case the operating system uses a different language
-vim.cmd('language en_IE.UTF8')
+vim.cmd("language en_IE.UTF8")
 
 -- Enable line numbers
 vim.opt.number = true
@@ -9,7 +9,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -22,10 +22,10 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
@@ -34,23 +34,31 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- Disable the tilde (~) lines that indicate the end of the buffer
-vim.opt.fillchars = 'eob: '
+vim.opt.fillchars = "eob: "
 
--- Indentation settings for using hard tabs for indent. Display tabs as four
--- characters wide.
+-- Indentation settings for using hard tabs for indent. Display tabs as four characters wide.
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
+-- Set terminal
+if vim.fn.has("win32") ~= 0 then
+  -- TODO maybe we can use vim.fn.expand("%LOCALAPPDATA%")
+  vim.o.shell = "C:\\Users\\Kurt\\AppData\\Local\\Programs\\Git\\bin\\bash.exe"
+end
 
--- neovide specific settings
-
--- Disable animated cursor
-vim.g.neovide_cursor_animation_length = 0.0
-vim.g.neovide_cursor_trail_size = 0.0
-
+-------------------------------------------------
+--------------- neovide settings ----------------
+-------------------------------------------------
 if vim.g.neovide == true then
-    vim.api.nvim_set_keymap('n', '<F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {})
-    vim.o.guifont = "Source Code Pro:h11"
+  -- Disable animated cursor
+  vim.g.neovide_cursor_animation_length = 0.0
+  vim.g.neovide_cursor_trail_size = 0.0
+
+  -- Fullscreen with F11
+  vim.api.nvim_set_keymap("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
+
+  -- Set font
+  vim.o.guifont = "Source Code Pro:h11"
 end
