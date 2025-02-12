@@ -20,7 +20,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     { "nvim-telescope/telescope-ui-select.nvim" },
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
-    { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+    { "nvim-tree/nvim-web-devicons", enabled = vim.g.has_nerd_font },
   },
   config = function()
     require("telescope").setup({
@@ -38,6 +38,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     local builtin = require("telescope.builtin")
     local map = vim.keymap.set
     map("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
+    map("n", "<leader>fF", builtin.live_grep, { desc = "Find in files" })
     map("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
   end,
 }

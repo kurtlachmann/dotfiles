@@ -43,18 +43,22 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
 -- Set terminal
-if vim.fn.has("win32") ~= 0 then
-  -- TODO maybe we can use vim.fn.expand("%LOCALAPPDATA%")
-  vim.o.shell = "C:\\Users\\Kurt\\AppData\\Local\\Programs\\Git\\bin\\bash.exe"
+if vim.fn.has("win32") == 1 then
+  vim.o.shell = vim.fn.expand("$LOCALAPPDATA\\Programs\\Git\\bin\\bash.exe")
 end
 
 -------------------------------------------------
 --------------- neovide settings ----------------
 -------------------------------------------------
 if vim.g.neovide == true then
-  -- Disable animated cursor
-  vim.g.neovide_cursor_animation_length = 0.0
-  vim.g.neovide_cursor_trail_size = 0.0
+  -- Disable animations
+  vim.g.neovide_position_animation_length = 0
+  vim.g.neovide_cursor_animation_length = 0.00
+  vim.g.neovide_cursor_trail_size = 0
+  vim.g.neovide_cursor_animate_in_insert_mode = false
+  vim.g.neovide_cursor_animate_command_line = false
+  vim.g.neovide_scroll_animation_far_lines = 0
+  vim.g.neovide_scroll_animation_length = 0.00
 
   -- Fullscreen with F11
   vim.api.nvim_set_keymap("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})

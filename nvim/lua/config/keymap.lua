@@ -16,8 +16,8 @@ vim.keymap.set("n", ",", ";")
 vim.keymap.set("n", ";", ",")
 
 -- Move up/down in bigger chunks
-vim.keymap.set({ "n", "v" }, "<C-up>", "8<up>")
-vim.keymap.set({ "n", "v" }, "<C-down>", "8<down>")
+vim.keymap.set({ "n", "v" }, "<C-up>", "5<up>")
+vim.keymap.set({ "n", "v" }, "<C-down>", "5<down>")
 
 -- Move left/right by words with Ctrl-Left/Right
 vim.keymap.set("n", "<C-right>", "w")
