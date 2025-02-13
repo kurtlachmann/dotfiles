@@ -36,6 +36,13 @@ return {
             { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
           },
         },
+        hooks = {
+          diff_buf_read = function(bufnr)
+            -- Cursorline has underline when current line is on a diff -> Disable it
+            -- https://github.com/sindrets/diffview.nvim/issues/113
+            vim.opt_local.cursorline = false
+          end,
+        },
       })
     end,
   },
