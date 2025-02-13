@@ -47,6 +47,9 @@ if vim.fn.has("win32") == 1 then
   vim.o.shell = vim.fn.expand("$LOCALAPPDATA\\Programs\\Git\\bin\\bash.exe")
 end
 
+-- Automatically enter insert mode when opening a new terminal
+vim.api.nvim_create_autocmd("TermOpen", {command = "startinsert"})
+
 -------------------------------------------------
 --------------- neovide settings ----------------
 -------------------------------------------------

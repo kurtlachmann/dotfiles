@@ -19,9 +19,9 @@ vim.keymap.set("n", ";", ",")
 vim.keymap.set({ "n", "v" }, "<C-up>", "5<up>")
 vim.keymap.set({ "n", "v" }, "<C-down>", "5<down>")
 
--- Move left/right by words with Ctrl-Left/Right
-vim.keymap.set("n", "<C-right>", "w")
-vim.keymap.set("n", "<C-left>", "b")
+-- Move left/right in chunks with Ctrl-Left/Right
+vim.keymap.set("n", "<C-right>", "10<right>")
+vim.keymap.set("n", "<C-left>", "10<left>")
 
 -- Move to first non-whitespace character with <Home>
 vim.keymap.set("i", "<Home>", "<C-O>^")
@@ -32,7 +32,14 @@ vim.keymap.set("n", "<C-PgUp", ":tabNext")
 vim.keymap.set("n", "<C-PgDown", ":tabprevious")
 
 -- Exit terminal mode with Escape
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- Toggle line comments with <Leader><Comma>
+vim.keymap.set("n", "<leader>,", "gcc", { remap = true, desc = "Toggle comment" })
+vim.keymap.set("v", "<leader>,", "gc", { remap = true, desc = "Toggle comment" })
+
+-- Enter visual line mode with <Leader>V to avoid reaching over to the shift key
+vim.keymap.set("n", "<leader>v", "V", { desc = "Visual line mode"})
