@@ -28,12 +28,60 @@ return {
         keymaps = {
           view = {
             { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
+            {
+              "n",
+              "<C-f>",
+              function()
+                actions.scroll_view(-10)
+              end,
+              { desc = "Scroll up" },
+            },
+            {
+              "n",
+              "<C-s>",
+              function()
+                actions.scroll_view(10)
+              end,
+              { desc = "Scroll down" },
+            },
           },
           file_panel = {
             { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
+            {
+              "n",
+              "<C-f>",
+              function()
+                actions.scroll_view(-10)
+              end,
+              { desc = "Scroll up" },
+            },
+            {
+              "n",
+              "<C-s>",
+              function()
+                actions.scroll_view(10)
+              end,
+              { desc = "Scroll down" },
+            },
           },
           file_history_panel = {
             { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
+            {
+              "n",
+              "<C-f>",
+              function()
+                actions.scroll_view(-10)
+              end,
+              { desc = "Scroll up" },
+            },
+            {
+              "n",
+              "<C-s>",
+              function()
+                actions.scroll_view(10)
+              end,
+              { desc = "Scroll down" },
+            },
           },
         },
         hooks = {

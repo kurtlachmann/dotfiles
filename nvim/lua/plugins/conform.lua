@@ -17,6 +17,8 @@ return {
     notify_on_error = false,
     formatters_by_ft = {
       json = { "prettier" },
+      javascript = { "prettier" },
+      typescript = { "prettier" },
       lua = { "stylua" },
       rust = { "rustfmt" },
       -- Conform can also run multiple formatters sequentially

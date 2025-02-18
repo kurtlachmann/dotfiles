@@ -3,6 +3,7 @@ vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Close file" })
 
 -- Save file with Ctrl-s
 vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("i", "<C-s>", "<ESC>:w<CR>")
 
 -- Copy/paste to or from system clipboard with the usual shortcuts
 -- TODO call `:set paste` before pasting and `:set nopaste` afterwards to keep formatting intact
