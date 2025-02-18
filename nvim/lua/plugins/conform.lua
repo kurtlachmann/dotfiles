@@ -16,7 +16,9 @@ return {
   opts = {
     notify_on_error = false,
     formatters_by_ft = {
+      json = { "prettier" },
       lua = { "stylua" },
+      rust = { "rustfmt" },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --

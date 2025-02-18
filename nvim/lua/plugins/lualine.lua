@@ -22,6 +22,14 @@ return {
           theme = "tokyonight",
           globalstatus = true,
         },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "branch" },
+          lualine_c = { { "filename", path = 1 } },
+          lualine_x = { "encoding", "fileformat", "filetype" },
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
+        },
       })
       -- Make sure the mode is bold
       mod_hl("lualine_a_normal", { bold = true })

@@ -42,13 +42,22 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
--- Set terminal
+-- Automatically enter insert mode when opening a new terminal
+vim.api.nvim_create_autocmd("TermOpen", { command = "startinsert" })
+
+
+-------------------------------------------------
+--------------- Windows settings ----------------
+-------------------------------------------------
 if vim.fn.has("win32") == 1 then
+  -- Set terminal
   vim.o.shell = vim.fn.expand("$LOCALAPPDATA\\Programs\\Git\\bin\\bash.exe")
+
+  -- Make sure we have make and gcc in the path so that treesitter can compile new parsers
+  vim.env.PATH = vim.env.PATH
+    .. ";C:\\mingw64\\x86_64-14.2.0-release-win32-seh-msvcrt-rt_v12-rev1\\bin"
 end
 
--- Automatically enter insert mode when opening a new terminal
-vim.api.nvim_create_autocmd("TermOpen", {command = "startinsert"})
 
 -------------------------------------------------
 --------------- neovide settings ----------------
@@ -63,9 +72,14 @@ if vim.g.neovide == true then
   vim.g.neovide_scroll_animation_far_lines = 0
   vim.g.neovide_scroll_animation_length = 0.00
 
-  -- Fullscreen with F11
-  vim.api.nvim_set_keymap("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
+  -- Toggle fullscreen with F11
+  vim.keymap.set("n", "<F11>", function()
+    vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
+  end)
 
-  -- Set font
-  vim.o.guifont = "Source Code Pro:h11"
+  --start in fullscreen by default
+  vim.g.neovide_fullscreen = true
+
+  -- Set font. You can list available fonts via :set guifont=*
+  vim.o.guifont = "SauceCodePro NF:h11"
 end

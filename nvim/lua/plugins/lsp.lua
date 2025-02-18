@@ -73,6 +73,14 @@ return {
           --  For example, in C this would take you to the header.
           map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
+          map(
+            "<leader>o",
+            function()
+              require("telescope.builtin").lsp_dynamic_workspace_symbols({ symbols = "class" })
+            end,
+            "Find class"
+          )
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
@@ -151,17 +159,27 @@ return {
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
-        pyright = {},
+        pyright = {
+          settings = {
+            python = {
+              -- Tell Pyright to use our virtual environment. This assumes we're always using poetry
+              -- and that our cwd is inside a Python project.
+              pythonPath = vim.fn.trim(vim.fn.system({ "poetry", "env", "info", "-e" })),
+            },
+          },
+        },
         rust_analyzer = {},
       }
 
-      -- Ensure the servers and tools above are installed. To check the current status of 
+      -- Ensure the servers and tools above are installed. To check the current status of
       -- installed tools and/or manually install other tools, you can run
       --    :Mason
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        "prettier",
         "stylua", -- Used to format Lua code
         "ruff",
+        "rustfmt",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
