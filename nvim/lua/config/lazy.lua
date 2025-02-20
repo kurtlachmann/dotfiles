@@ -21,9 +21,11 @@ require("lazy").setup({
     -- import plugins from the "plugins" directory
     { import = "plugins" },
   },
+  rocks = {
+    enabled = false,
+  },
   change_detection = { notify = false },
   install = {
     colorscheme = { "tokyonight-night" },
   },
 })
-
