@@ -14,6 +14,23 @@ return {
         { desc = "History of current file" }
       )
 
+      local actions = require("diffview.config").actions
+      local commonKeymaps = {
+        { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
+        {
+          "n",
+          "<c-f>",
+          actions.scroll_view(-10),
+          { desc = "Scroll up" },
+        },
+        {
+          "n",
+          "<c-s>",
+          actions.scroll_view(10),
+          { desc = "Scroll down" },
+        },
+      }
+
       -- git status
       vim.keymap.set("n", "<leader>gs", "<cmd>DiffviewOpen -uno<CR>", { desc = "Git status" })
       vim.keymap.set(
@@ -26,63 +43,9 @@ return {
       require("diffview").setup({
         enhanced_diff_hl = true,
         keymaps = {
-          view = {
-            { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
-            {
-              "n",
-              "<C-f>",
-              function()
-                actions.scroll_view(-10)
-              end,
-              { desc = "Scroll up" },
-            },
-            {
-              "n",
-              "<C-s>",
-              function()
-                actions.scroll_view(10)
-              end,
-              { desc = "Scroll down" },
-            },
-          },
-          file_panel = {
-            { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
-            {
-              "n",
-              "<C-f>",
-              function()
-                actions.scroll_view(-10)
-              end,
-              { desc = "Scroll up" },
-            },
-            {
-              "n",
-              "<C-s>",
-              function()
-                actions.scroll_view(10)
-              end,
-              { desc = "Scroll down" },
-            },
-          },
-          file_history_panel = {
-            { "n", "q", "<cmd>DiffviewClose<CR>", { desc = "Close Diffview" } },
-            {
-              "n",
-              "<C-f>",
-              function()
-                actions.scroll_view(-10)
-              end,
-              { desc = "Scroll up" },
-            },
-            {
-              "n",
-              "<C-s>",
-              function()
-                actions.scroll_view(10)
-              end,
-              { desc = "Scroll down" },
-            },
-          },
+          view = commonKeymaps,
+          file_panel = commonKeymaps,
+          file_history_panel = commonKeymaps,
         },
         hooks = {
           diff_buf_read = function(bufnr)

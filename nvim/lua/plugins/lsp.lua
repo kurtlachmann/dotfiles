@@ -33,6 +33,8 @@ return {
           --  To jump back, press <C-t>.
           map("<C-i>", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
+          map("<leader>i", vim.lsp.buf.hover, "Show documentation")
+
           -- Find references for the word under your cursor.
           map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 

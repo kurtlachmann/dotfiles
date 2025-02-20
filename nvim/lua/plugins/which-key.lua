@@ -4,7 +4,7 @@ return { -- Useful plugin to show you pending keybinds.
   opts = {
     -- delay between pressing a key and opening which-key (milliseconds)
     -- this setting is independent of vim.opt.timeoutlen
-    delay = 200,
+    delay = 800,
     icons = {
       -- set icon mappings to true if you have a Nerd Font
       mappings = vim.g.has_nerd_font,

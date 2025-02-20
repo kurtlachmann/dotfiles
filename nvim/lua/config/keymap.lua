@@ -6,9 +6,8 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 vim.keymap.set("i", "<C-s>", "<ESC>:w<CR>")
 
 -- Copy/paste to or from system clipboard with the usual shortcuts
--- TODO call `:set paste` before pasting and `:set nopaste` afterwards to keep formatting intact
 vim.keymap.set("v", "<C-c>", '"+y')
-vim.keymap.set("i", "<C-v>", "<C-r>+")
+vim.keymap.set("i", "<C-v>", '<Esc>"+pi')
 
 -- Continue last f,F,t,T in the same direction with , and
 -- in the opposite direction with ;
@@ -64,3 +63,7 @@ vim.keymap.set(
   { desc = "Checkout recent branch" }
 )
 vim.keymap.set("n", "<leader>gB", ":Telescope git_branches<CR>", { desc = "Search branch" })
+
+-- Split window with - and |
+vim.keymap.set("n", "<C-W>-", ":split<CR>")
+vim.keymap.set("n", "<C-W>|", ":vsplit<CR>")
