@@ -56,3 +56,11 @@ end, { expr = true })
 -- Jump back/forward with Alt-Left/Right
 vim.keymap.set("n", "<M-left>", "<C-o>")
 vim.keymap.set("n", "<M-right>", "<C-i>")
+
+vim.keymap.set(
+  "n",
+  "<leader>gb",
+  require("custom.git").checkoutRecentBranch,
+  { desc = "Checkout recent branch" }
+)
+vim.keymap.set("n", "<leader>gB", ":Telescope git_branches<CR>", { desc = "Search branch" })
