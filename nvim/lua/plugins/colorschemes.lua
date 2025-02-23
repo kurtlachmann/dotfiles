@@ -18,4 +18,8 @@ return {
     name = "catppuccin",
     priority = 1000,
   },
+  {
+    "AlexvZyl/nordic.nvim",
+    priority = 1000,
+  },
 }

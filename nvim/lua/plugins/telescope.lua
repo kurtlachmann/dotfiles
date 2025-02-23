@@ -38,6 +38,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
     local map = vim.keymap.set
     map("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
     map("n", "<leader>fF", builtin.live_grep, { desc = "Find in files" })
-    map("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
+    map("n", "<leader>fb", function()
+      builtin.buffers({ sort_mru = true, sort_lastused = true })
+    end, { desc = "Find buffers" })
   end,
 }
