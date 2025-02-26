@@ -1,8 +1,18 @@
+local reload_harpoon = function()
+  local hok, Harpoon = pcall(require, "harpoon")
+  local dok, Data = pcall(require, "harpoon.data")
+  if not hok or not dok then
+    return
+  end
+  Harpoon.data = Data.Data:new(Harpoon.config)
+  Harpoon.lists = {}
+end
+
 return {
   "ThePrimeagen/harpoon",
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim" },
-  config = function()
+  init = function()
     local harpoon = require("harpoon")
     harpoon:setup()
 
@@ -29,5 +39,11 @@ return {
     vim.keymap.set("n", "h,", function()
       harpoon:list():select(4)
     end)
+
+    -- Reload harpoon when the current working directory has changed
+    vim.api.nvim_create_autocmd({ "DirChanged" }, {
+      pattern = "*",
+      callback = reload_harpoon,
+    })
   end,
 }
