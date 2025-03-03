@@ -1,17 +1,42 @@
 return {
   {
-    "folke/tokyonight.nvim",
+    "Shatur/neovim-ayu",
     lazy = false,
     priority = 1000,
-    opts = {},
     init = function()
-      vim.cmd.colorscheme("tokyonight-night")
+      local ayu = require("ayu.colors")
+      ayu.generate()
 
-      vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#234c3d" })
-      vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#592c42" })
-      vim.api.nvim_set_hl(0, "DiffChange", { bg = "#1f2231" })
-      vim.api.nvim_set_hl(0, "DiffText", { bg = "#394b70" })
+      local custom = {
+        normal = "#dfddd6",
+      }
+
+      require("ayu").setup({
+        overrides = function()
+          return {
+            Normal = { fg = custom.normal },
+            ["@variable"] = { fg = custom.normal },
+            ["@variable.parameter"] = { fg = custom.normal },
+            LineNr = { fg = "#424853" },
+            DiffAdd = { bg = "#25462e" },
+            DiffDelete = { bg = "#4a2121" },
+            DiffText = { bg = "#23447b" },
+            MarkviewCheckboxChecked = { fg = ayu.string },
+            MarkviewCheckboxUnchecked = { fg = custom.normal },
+
+            -- Make the "/////" rows for diffview more subtle
+            DiffviewDiffDeleteDim = { fg = "#1e222a" },
+          }
+        end,
+      })
+
+      -- Make this the default color scheme
+      vim.cmd.colorscheme("ayu")
     end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
   },
   {
     "catppuccin/nvim",

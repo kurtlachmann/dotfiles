@@ -19,25 +19,25 @@ return {
         options = {
           section_separators = { left = "", right = "" },
           component_separators = { left = "", right = "" },
-          theme = "tokyonight",
+          theme = "ayu",
           globalstatus = true,
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { "branch" },
-          lualine_c = { { "filename", path = 1 } },
-          lualine_x = { "encoding", "fileformat", "filetype" },
+          lualine_b = { { "filename", path = 1 } },
+          lualine_c = { },
+          lualine_x = { "branch", "encoding", "fileformat", "filetype" },
           lualine_y = { "progress" },
           lualine_z = { "location" },
         },
       })
       -- Make sure the mode is bold
-      mod_hl("lualine_a_normal", { bold = true })
-      mod_hl("lualine_a_insert", { bold = true })
-      mod_hl("lualine_a_visual", { bold = true })
-      mod_hl("lualine_a_terminal", { bold = true })
-      mod_hl("lualine_a_replace", { bold = true })
-      mod_hl("lualine_a_command", { bold = true })
+      -- mod_hl("lualine_a_normal", { bold = true })
+      -- mod_hl("lualine_a_insert", { bold = true })
+      -- mod_hl("lualine_a_visual", { bold = true })
+      -- mod_hl("lualine_a_terminal", { bold = true })
+      -- mod_hl("lualine_a_replace", { bold = true })
+      -- mod_hl("lualine_a_command", { bold = true })
     end,
   },
 }

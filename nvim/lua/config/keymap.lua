@@ -20,16 +20,19 @@ vim.keymap.set({ "n", "v" }, "<C-up>", "5<up>")
 vim.keymap.set({ "n", "v" }, "<C-down>", "5<down>")
 
 -- Move left/right in chunks with Ctrl-Left/Right
-vim.keymap.set("n", "<C-right>", "10<right>")
-vim.keymap.set("n", "<C-left>", "10<left>")
+local jump_word_pattern = "\\(\\W\\)\\@<=\\w\\|^\\w"
+local jump_next_word = function() vim.fn.search(jump_word_pattern, "W") end
+local jump_prev_word = function() vim.fn.search(jump_word_pattern, "Wb") end
+vim.keymap.set("n", "<C-right>", jump_next_word)
+vim.keymap.set("n", "<C-left>", jump_prev_word)
 
 -- Move to first non-whitespace character with <Home>
 vim.keymap.set("i", "<Home>", "<C-O>^")
 vim.keymap.set("n", "<Home>", "^")
 
 -- Switch tabs with Ctrl+PageUp/Down
-vim.keymap.set("n", "<C-PgUp", ":tabNext")
-vim.keymap.set("n", "<C-PgDown", ":tabprevious")
+vim.keymap.set("n", "<C-PgUp>", ":tabNext")
+vim.keymap.set("n", "<C-PgDown>", ":tabprevious")
 
 -- Exit terminal mode with Escape
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")

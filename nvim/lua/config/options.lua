@@ -11,6 +11,9 @@ vim.opt.smartcase = true
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
 
+-- Allow switching buffers while current buffer has unsaved changes
+vim.opt.hidden = true
+
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
@@ -71,6 +74,7 @@ if vim.g.neovide == true then
   vim.g.neovide_cursor_animate_command_line = false
   vim.g.neovide_scroll_animation_far_lines = 0
   vim.g.neovide_scroll_animation_length = 0.00
+  vim.g.neovide_hide_mouse_when_typing = true
 
   -- Toggle fullscreen with F11
   vim.keymap.set("n", "<F11>", function()
