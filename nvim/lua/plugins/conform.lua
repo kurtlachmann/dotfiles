@@ -19,6 +19,13 @@ return {
       json = { "prettier" },
       javascript = { "prettier" },
       typescript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescriptreact = { "prettier" },
+      yaml = { "prettier" },
+      html = { "prettier" },
+      json = { "prettier" },
+      css = { "prettier" },
+      markdown = { "prettier" },
       lua = { "stylua" },
       rust = { "rustfmt" },
       -- Conform can also run multiple formatters sequentially

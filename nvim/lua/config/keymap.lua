@@ -12,8 +12,8 @@ vim.keymap.set("i", "<C-v>", '<Esc>"+pi')
 -- Continue last f,F,t,T in the same direction with , and
 -- in the opposite direction with ;
 -- Essentially swapping the default behaviour.
-vim.keymap.set("n", ",", ";")
-vim.keymap.set("n", ";", ",")
+vim.keymap.set({ "n", "v" }, ",", ";")
+vim.keymap.set({ "n", "v" }, ";", ",")
 
 -- Move up/down in bigger chunks
 vim.keymap.set({ "n", "v" }, "<C-up>", "5<up>")

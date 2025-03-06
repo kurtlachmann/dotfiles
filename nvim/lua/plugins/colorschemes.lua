@@ -29,9 +29,6 @@ return {
           }
         end,
       })
-
-      -- Make this the default color scheme
-      vim.cmd.colorscheme("ayu")
     end,
   },
   {
@@ -42,6 +39,27 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
+    init = function()
+      local utils = require("catppuccin.utils.colors")
+      require("catppuccin").setup({
+        term_colors = true,
+        custom_highlights = function(colors)
+          return {
+            Folded = { fg = colors.surface1, bg = colors.crust },
+            DiffviewDiffDeleteDim = { fg = colors.surface0 },
+            DiffAdd = { bg = "#205344" },
+            DiffDelete = { bg = "#601e2e" },
+            -- DiffChange = { bg = "#2e3e5e" },
+            DiffChange = { bg = "#24283e" },
+            DiffText = { bg = "#3e5e8e" },
+            GitSignsChange = { fg = colors.blue },
+            VirtColumn = { fg = colors.surface0 },
+          }
+        end,
+      })
+      -- Make this the default color scheme
+      vim.cmd.colorscheme("catppuccin")
+    end,
   },
   {
     "AlexvZyl/nordic.nvim",
